@@ -125,6 +125,7 @@ Proof(
     1 ( p ∨ q )     by Premise,
     2 ( ¬p )        by Premise,
 
+    
 )
 
 

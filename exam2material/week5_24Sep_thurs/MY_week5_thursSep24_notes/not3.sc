@@ -10,7 +10,21 @@ import org.sireum.justification.natded.prop._
     ( p __>: q ) |- ( !q __>: !p  )
       Proof(
       1 (  p __>: q ) by Premise,
-
+      // contrapositive
+      2 SubProof(
+        3 Assume ( !q ),
+        // use NegI for !p
+        4 SubProof(
+          5 Assume ( p ),
+          6 ( q ) by ImplyE(1,5),
+          7 ( F ) by NegE(6, 3),
+          // NegI must end in F
+          // goal: ( F )
+        ),
+        8 ( !p ) by NegI(4),
+        // goal: ( !p ) 
+      ),
+      9 ( !q __>: !p ) by ImplyI(2),
     )
   )
 }
