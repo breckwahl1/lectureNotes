@@ -208,10 +208,10 @@ Equivalence: DeMorgan's law (part 1).
 suppose our domain is k1 through kn
 
 
-¬(∃ x P(x)) is  equivalent to...
-    by DeMorgan's: 
+¬(∃ x P(x)) is  equivalent to... !(P(k1) || P(k2) || ... P(kn))
+    by DeMorgan's: !P(k1) && !P(k2)...&& !P(kn)
 
-which is? 
+which is? ∀ x (¬P(x))
 
 
 /////////////////////////
@@ -227,11 +227,11 @@ Equivalence: DeMorgan's law (part 2).
 
 suppose our domain is k1 through kn
 
-¬(∀ x P(x)) is equivalent to...
-    by DeMorgan's:
+¬(∀ x P(x)) is equivalent to... !P(k1) && !P(k2)...&& !P(kn)
+    by DeMorgan's: !P(k1) || !P(k2) || ... || !P(kn)
 
 
-...which is?
+...which is? ∃ x (¬P(x))
 
 
 
@@ -266,10 +266,16 @@ Domain: students
 
 All prize-winners were 5th graders
 
-Translation: 
-Negation: 
+Translation: ∀ x (wonPrize(x) → in5th(x))
 
-Translation of negation: 
+!(∀ x (wonPrize(x) → in5th(x)))
+∃ x !(wonPrize(x) → in5th(x))
+∃ x !(!wonPrize(x) || in5th(x))
+∃ x (wonPrize(x) && !in5th(x))
+
+Negation: ∃ x (wonPrize(x) && !in5th(x))
+
+Translation of negation: there is a student that won a prize and is not in 5th grade
 
 ///
 
