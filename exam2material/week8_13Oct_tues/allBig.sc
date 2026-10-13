@@ -23,6 +23,50 @@ import org.sireum.justification.natded.prop._
       2 ( ∀((x: T) => (Q(x) __>: C(x)  )) ) by Premise,
       3 ( ∀((x: T) => (R(x) __>: !B(x) & !C(x)  )) ) by Premise,
 
+      // let subproof with for all introduction
+      4 Let ((a: T) => Subproof(
+        // implyI to build
+        5 Subproof (
+          6 Assume ( P(a) | Q(a) ),
+
+          // start negI to build !R
+          7 SubProof(
+            8 Assume ( R(a) ),
+
+            // use premises, plug a into them
+            9 ( P(a) __>: B(a) ) by AllE[T](1),
+            10 ( Q(a) __>: C(a) ) by AllE[T](2),
+            11 ( R(a) __>: !B(a) & !C(a) ) by AllE[T](3),
+
+            12 ( !B(a) & !C(a) ) by ImplyE(11, 8),
+
+            13 ( !B(a) ) by AndE1(12),
+            14 ( !C(a) ) by AndE2(12),
+
+            // try OrE with ( P(a) | Q(a) )
+            15 SubProof(
+              16 Assume ( P(a) ), 
+              17 ( B(a) ) by ImplyE(9,16),
+              18 ( F ) by NegE(17,13),
+              // goal: contradiction (F)
+            ),
+            19 SubProof(
+              20 Assume ( Q(a) ),
+              21 ( C(a) ) by ImplyE(10,20),
+              22 ( F ) by NegE(21, 14),
+              // goal: F
+            ),
+            23 ( F ) by OrE(6, 15, 19),
+            // goal: F
+          ),
+          24 ( !R(a) ) by NegI(7), 
+          // goal: !R(a)
+        ),
+        25 ( P(a) | Q(a) __>: !R(a) ) by ImplyI(5),
+          // P(a) | Q(a) __>: !R(a) 
+      )),
+      26 ( ∀((x: T) => (P(x) | Q(x) __>: !R(x)  )) ) by AllI[T](4),
+      // goal: ∀((x: T) => (P(x) | Q(x) __>: !R(x)  ))
     )
   )
 }

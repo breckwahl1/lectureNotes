@@ -32,13 +32,23 @@ Today:
 Reminder:
 
 AllE - when can we use?
-
+    for all statement, individual of that type
+    might be parameter to a proof function (named in premise)
+    might be individual named inside subproof
 
 AllI - when do we use? idea?
+    our goal is a for all statement
+    subproof (let subproof) name a random individual, like a, 
+        goal: get out statement about that individual
+    after, make same claim with for all statement (must be true for all in domain)
 
 ////////////////////////
 
 Bigger example: allBig.sc
+
+ExistsI: use when we have a statement about a particular individual
+    create a similar Exists statement since it was true for someone
+    no subproofs
 
 ////////////////////////
 
@@ -51,10 +61,39 @@ in-class quiz
 
 ///////////////////////
 
+    (  
+        ¬(∃ ((x: T) => ( ¬P(x) ⋀ Q(x) ) )) 
+    ) 
+⊢ 
+    (   
+        ∀ ((x: T) =>  ( ¬P(x) → ¬Q(x) ))
+    )
+Proof(
+    1 ( ¬(∃ ((x: T) => ( ¬P(x) ⋀  Q(x) )) )) by Premise,
+    2 Let ((a: T) => SubProof(
+        3 SubProof(
+            4 Assume ( !P(a) ), // left side of implies
+            5 SubProof(
+               6 Assume ( Q(a) ), // to create contradiction
+               7 ( !P(a) by Q(a) ) by AndI(4, 6),
+               8 ( ¬(∃ ((x: T) => ( ¬P(x) ⋀  Q(x) )) ) ) by ExistsI[T](7),
+               9 ( F ) by NegE( 8, 1 ),
+           ),
+           10 ( !Q(a) ) by NegI(5) // must be the right side of the implies
+        ),
+        11 (¬P(a) → ¬Q(a)) by ImplyI(3),
+    )), 
+    12 ( ∀((x: T) => (¬P(x) → ¬Q(x))) ) by AllI[T](2)
+)
+Group of answer choices
+
+
+
 Exam 2:
 - Thursday, October 15 9:30-10:45
 - Closed notes, closed computers
 similar format as exam 1 
+    open ended similar to hw 4-6
 
 - Natural deduction proofs in propositional logic, esp. with:
     ImplyI, NegE, NegI, BottomE, PbC
@@ -67,6 +106,7 @@ Sets, including:
     - N (natural, all positive, starts at 1), Z (integers),
             R (reals - includes whole numbers, fractions,
             numbers with decimals)
+        Natural starts at 1.
     - union, intersection, difference (-), subsets
     - Venn diagrams
     - general reasoning about sets
@@ -110,3 +150,29 @@ Predicate logic statements, including:
 ///////////////////////////////////////
 
 Work through practice exam (will post solution after class)
+
+    (  
+        ¬(∃ ((x: T) => ( ¬P(x) ⋀ Q(x) ) )) 
+    ) 
+⊢ 
+    (   
+        ∀ ((x: T) =>  ( ¬P(x) → ¬Q(x) ))
+    )
+Proof(
+    1 ( ¬(∃ ((x: T) => ( ¬P(x) ⋀  Q(x) )) )) by Premise,
+    2 Let ((a: T) => SubProof(
+        3 SubProof(
+            4 Assume ( ??? ),
+            5 SubProof(
+               6 Assume ( ??? ),
+               7 ( ??? ) by AndI(4, 6),
+               8 ( ??? ) by ExistsI[T](7),
+               9 ( F ) by NegE(??)
+           ),
+           10 ( ??? ) by NegI(5)
+        ),
+        11 (¬P(a) → ¬Q(a)) by ???
+    )), 
+    12 ( ∀((x: T) => (¬P(x) → ¬Q(x))) ) by ???    
+)
+will be open ended questions similar to this
