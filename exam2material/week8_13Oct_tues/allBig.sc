@@ -24,9 +24,9 @@ import org.sireum.justification.natded.prop._
       3 ( ∀((x: T) => (R(x) __>: !B(x) & !C(x)  )) ) by Premise,
 
       // let subproof with for all introduction
-      4 Let ((a: T) => Subproof(
+      4 Let ((a: T) => SubProof(
         // implyI to build
-        5 Subproof (
+        5 SubProof (
           6 Assume ( P(a) | Q(a) ),
 
           // start negI to build !R
