@@ -18,7 +18,11 @@ import org.sireum.justification.natded.prop._
       Proof(
       1 ( ( ∃((x: T) => P(x)) ) | ( ∃((x: T) => Q(x)) ) ) by Premise,
 
+      2 Let ((a: T) => SubProof(
+        3 Assume( P(a) ),
+        
 
+      )),
     )
   )
 }

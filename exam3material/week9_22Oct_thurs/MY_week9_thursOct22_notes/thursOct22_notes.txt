@@ -11,20 +11,20 @@ Today:
 Soundness and completeness of predicate logic.
 
 
-Soundness: definition?
+Soundness: everything we coud prove with deduction was actually true/valid
 
-    propositional logic?
+    propositional logic? sound
 
-    predicate logic?
+    predicate logic? sound
+
+any proof system is sound
 
 
+Completeness: we can use deduction to prove all true/valid arguments
 
+    propositional logic? complete
 
-Completeness: definition?
-
-    propositional logic?
-
-    predicate logic?
+    predicate logic? not complete
 
 
 
@@ -42,7 +42,7 @@ Domain with integers with operations like +
 All integers? 2 + 3 = ?
 
 
-Subset (0,1,2,3,4) of integers. 2 + 3 = ?
+Subset (0,1,2,3,4) of integers. 2 + 3 = 0 ( modular arithmetic )
 
 
 
@@ -97,9 +97,10 @@ The induction domino effect:
 
 
 What is this saying?
-    P(1)? 
+    P(1) - the claim is true for n = 1
 
-    ∀ k (P(k) → P(k+1))? 
+    ∀ k (P(k) → P(k+1)) for all natural numbers in domain, if it's true for P(k),
+        it's true for P( k + 1 ) 
 
 
 
@@ -110,12 +111,17 @@ Putting it all together:
 English translation?
 
 
-How will we prove P(1)?
+How will we prove P(1) choose first element in domain, show claim holds 
+    called the BASE CASE
 
-
+called the INDUCTIVE STEP
 How will we prove ∀ k (P(k) → P(k+1))? 
     (How would we prove this for-all statements in predicate logic?)
-
+AllI
+pick random individual in domain
+    ImplyI
+    assume left side <-- called the INDUCTIVE HYPOTHESIS. 
+    try to get P(k + 1) 
 
 
 ////////////////////////////////////
@@ -131,10 +137,25 @@ We want to prove that for any positive integer n:
     1 + 2 + ... + n = n*(n+1)/2
 
 
-
+claim: P(n)
 
 Proof by induction.
 
+Base case: must prove claim holds for the first pos int n,
+n = 1. We have left side of claim, RHS: 1(1+1)/2 = 1
+two sides are equal so base case holds
+
+Inductive step: Assume inductive hypothesis: 1 + 2 + ... + k = k(k+1)/2
+    for some fixed positive integer k. must show that our claim holds for k + 1
+
+We have that: 1 + 2 + ... + k + (k + 1) = k(k + 1) / 2 + (k + 1) (by inductive hypothesis)
+        ...     = (k + 1)((k + 1) + 1)/2
+    The claim holds for k + 1. 
+
+We have proved base case and the inductive step, our claim holds by induction for all
+    positive integers n.
+
+label base case and inductive step, full sentences. start with "we assume (inductive hypothesis)"
 
 
 /////////////////////////////////
@@ -182,13 +203,25 @@ Proof by induction.
 Example: Prove that 3^n - 1 is even for all positive integers n.
 
 
-what does "even" mean? 
-
+what does "even" mean? divisible by 2
+{ x : x = 2k, k in Z, k >= 1 }
 
 
 Proof by induction.
+Base case: must prove that our claim holds for the smallest positive integer k = 1
+We have that 3^1 - 1 = 2. since 2 = 2 * 1, where 1 is an integer. 2 is even. The base case holds
 
+Inductive step: We assume the inductive hypothesis, that 3^k - 1 is even for
+    some fixed positive integer k.
+We must prove that 3^(k+1) - 1 is also even.
 
+Since 3^k - 1 is even, 3^k - 1 = 2a where a is an int
+    3^(k + 1) - 1 = 3*3^k - 1
+                  = 3*(3^k - 1) + 2
+                  = 3*2a + 2
+                  = 6a + 2
+                  = 2(3a + 1)
+3^(k+1) - 1 = 2(3a + 1), 3a + 1 is an int, 3^(k+1) - 1 is even.
 
 //////////////////////////////////
 
