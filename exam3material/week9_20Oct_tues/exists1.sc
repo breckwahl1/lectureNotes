@@ -27,11 +27,11 @@ import org.sireum.justification.natded.prop._
         4 Assume ( Human(alias) ),
         5 ( Human(alias) __>: Mortal(alias)) by AllE[T](1),
         6 ( Mortal(alias) ) by ImplyE(5, 4),
-        7 ( ∃((x: T) => Mortal(x)) ) by ExistsI[T](6)
+        7 ( ∃((x: T) => Mortal(x)) ) by ExistsI[T](6),
 
         //goal: ∃((x: T) => Mortal(x))
       )),
-      8 ( ∃((x: T) => Mortal(x)) ) by ExistsE[T](2, 3)
+      8 ( ∃((x: T) => Mortal(x)) ) by ExistsE[T](2, 3),
       //goal: ∃((x: T) => Mortal(x))
     )
   )

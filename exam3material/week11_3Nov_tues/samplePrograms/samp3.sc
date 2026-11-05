@@ -9,4 +9,4 @@ var cur: Z = 10
 while (cur >= 1) {
   println("Next number: ", cur)
   cur = cur - 1
-}
+} 
