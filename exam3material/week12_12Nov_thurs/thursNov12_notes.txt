@@ -21,10 +21,13 @@ if (base case condition) {
 } else {
 
     //what to do here?
+    //maybe function requires that the parameter be positive
+    //prove the requirements about what I am passing
 
     recursive call
 
     //what can we do here?
+    //use its postcondition (ensures) as premises
 
     answer = (something)
 }
@@ -56,10 +59,20 @@ while (condition) {
 }
 
 
-<-- what do we know here?
+<-- what do we know here? condition is false
 
 <-- why is this more challenging than if-statements?
 
+//////////////////////////////
+
+loop invariant: describe what happens in a loop in terms of the
+    statements being done
+
+
+needs to be true before the loop begins
+need to prove the invariant is still true at the end of each iteration
+can use the invariant as a premise at the beginning of each iteration
+can use the invariant as a premise after the end of the loop
 
 //////////////////////////////
 
@@ -78,6 +91,7 @@ Steps to proving correctness of a loop:
 1) Prove the invariant is true before the loop begins
 
     (what is this like in mathematical induction?)
+    base case
 
 
 
@@ -85,16 +99,17 @@ Steps to proving correctness of a loop:
     Prove the invariant still holds at the end of the iteration.
 
     (what is this like in mathematical induction?)
+    inductive step
 
 
 
 /////////////////////////
 
 When loop ends, you know two things:
-    1) About the invariant? 
+    1) About the invariant?  it is true
 
 
-    2) About the loop condition? 
+    2) About the loop condition? it is false
 
 
 
@@ -140,7 +155,11 @@ Example: see code for multiplication with repeated addition
 
 --> should the test cases/asserts be different?
 
+///////////////////
 
+<-- stopped here, will continue on Tuesday
+
+///////////////////
 
 --> what if the loop condition was "i < y" instead?
 
