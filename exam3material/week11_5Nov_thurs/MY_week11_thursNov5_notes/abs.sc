@@ -19,3 +19,6 @@ if (num < 0) {
 
 //How can we assert that num is the absolute value of the input?
 //(what was the original input?)
+
+assert(num >= 0)
+assert(num == numOrig | num == numOrig * (-1))

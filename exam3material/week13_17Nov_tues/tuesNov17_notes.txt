@@ -17,6 +17,7 @@ Today:
 Reminder: loop invariant(s)
 
 //what do we need here?
+prove the invariants all hold before the loop begins
 
 while (condition) {
     Invariant(
@@ -27,11 +28,15 @@ while (condition) {
     )
 
     //what can we to do here?
+    assume invariants are true and list them as a premise.
 
     //what do we need to do here?
+    prove that each invariant is true at the end of iteration
 }
 
 //how to prove the postcondition?
+!(condition) // we aren't in the condition anymore so it is false
+list each invariant all as premises
 
 ////////////////////////
 
@@ -80,6 +85,15 @@ Topics:
 - Programming logic, including:
     - assumes and asserts
     - Subst and Algebra
+    
+        m ( claim that is being rewrittten ) 
+        n ( LHS == RHS ) 
+
+        Subst_?(n,m), (comparison, claim) // points at side being replaced
+
+        Subst_<(n,m), rewriting the claim by replacing all LHS by RHS (pointing at side being replaced)
+        Subst_>(n,m), rewriting claim by replacing all RHS with LHS,
+
     - Verifying programs with:
         - Variable assignments/expressions/updates
         - If/else statements
